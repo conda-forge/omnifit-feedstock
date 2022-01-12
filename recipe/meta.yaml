@@ -1,21 +1,19 @@
 {% set name = "omnifit" %}
-{% set version = "0.2.1" %}
-{% set hash_type = "sha256" %}
-{% set hash_value = "2f74e8c49f9bba724dd6a3bf53abfdc52ff1b5255d61f68333c4149f52789788" %}
+{% set version = "0.3.0" %}
 
 package:
-  name: '{{ name|lower }}'
-  version: '{{ version }}'
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  fn: '{{ name }}-{{ version }}.tar.gz'
+  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  '{{ hash_type }}': '{{ hash_value }}'
+  sha256: 61ecc0115a4c563042a3675ce818480e562d0859f4c93dd1c18cb885a343b665
   patches:
     - patch.diff
 
 build:
-  number: 1000
+  number: 0
   script: python setup.py install --offline --single-version-externally-managed --record=record.txt
 
 requirements:
